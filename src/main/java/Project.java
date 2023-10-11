@@ -54,21 +54,7 @@ public class Project {
 
 
 
-//        Notebook[] notebook = new Notebook[7];
-//        Notebook notebook1 = new Notebook();
-//        for (int i = 0; i < notebook.length; i++) {
-//            notebook1.randomCreat();
-//            notebook[i] = notebook1;
-//        }
-//        for (int i = 0; i < notebook.length; i++) {
-//            notebook[i].showNotebook();
-//            System.out.println("---------------------------------------");
-//        }
-//        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-//
-//        NotebookBetta notebookBetta = new NotebookBetta();
-//        notebookBetta.randomCreatMap(mapN);
-//        notebookBetta.showNotebook();
+
 
 
     }
