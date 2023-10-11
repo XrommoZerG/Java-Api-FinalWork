@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Project {
 
@@ -20,6 +21,19 @@ public class Project {
         mapN.put("color", arrcolor);
 
         return mapN;
+    }
+
+    private static Map<String,String> generateFilterNull(){
+        Map<String, String> mapN = new HashMap<>();
+        mapN.put("brand", null);
+        mapN.put("ram", null);
+        mapN.put("memory", null);
+        mapN.put("processors", null);
+        mapN.put("graphics", null);
+        mapN.put("color", null);
+
+        return mapN;
+
     }
 
     private static NotebookBetta[] generateNotebook(Map<String, String[]> map,int lenght ) {
@@ -46,9 +60,32 @@ public class Project {
 
     public static void main(String[] args) {
         Map<String, String[]> mapN = generateMap();
-        int lenght = 10;
-        NotebookBetta[] notebookBettas = generateNotebook(mapN,lenght);
+        Map<String,String> filter = generateFilterNull();
+        int lenghte = 10;
+        NotebookBetta[] notebookBettas = generateNotebook(mapN,lenghte);
         showNotebooks(notebookBettas);
+
+        Boolean key = true;
+        Scanner scanner = new Scanner(System.in);
+
+        while (key){
+            System.out.println("Укажите фильтр\n");
+            String chois = scanner.nextLine();
+
+
+            switch (chois){
+                case "0":
+                    key = true;
+                    break;
+                case "1":
+                    key = false;
+                    break;
+            }
+
+        }
+
+
+
 
 
 
