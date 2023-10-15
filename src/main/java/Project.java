@@ -13,18 +13,16 @@ public class Project {
                 {"graphics", "Nvidia", "Intel", "Amd"},
                 {"color", "Black", "Red", "Green", "Metalick"}
         };
-        //String[] shracteristic = new String[]{"brand", "ram", "memory", "processors", "graphics", "color"};
         Map<String, String[]> mapMagazine = generateMap(param);
         Map<String, String> filter = generateFilterNull(param);
         int lenghte = 10;
-        NotebookBetta[] notebookBettas = generateNotebook(mapMagazine, lenghte);
+        List<NotebookBetta> listNotebook = creatListNotebook(mapMagazine,lenghte);
 
         Boolean boolKey = true;
-        Integer intKey;
         Scanner scanner = new Scanner(System.in);
-        String zagl = "MAGAZIN";
 
-        showNotebooks(notebookBettas,zagl);
+        showListNonebook(listNotebook,"MAGAZINE");
+
 
         while (boolKey) {
 
@@ -46,8 +44,8 @@ public class Project {
                     filter = generateFilterNull(param);
                     break;
                 case 4:
-                    notebookBettas = generateNotebook(mapMagazine, lenghte);
-                    showNotebooks(notebookBettas,zagl);
+                    listNotebook = creatListNotebook(mapMagazine,lenghte);
+                    showListNonebook(listNotebook,"MAGAZINE");
                     break;
                 case 5:
                     boolKey = false;
@@ -62,9 +60,30 @@ public class Project {
 
     }
 
-//    private static boolean cheked(){
-//
-//    }
+    //region List
+    private static List<NotebookBetta> creatListNotebook(Map<String, String[]> mapM, int lenght){
+        List<NotebookBetta> list = new ArrayList<>();
+
+        for (int i = 0; i < lenght; i++) {
+            list.add(NotebookBetta.randomCreatMap(mapM));
+        }
+        return list;
+    }
+
+    private static void showListNonebook(List<NotebookBetta> list,String zagl){
+        System.out.println("**********" + zagl + "**********");
+        for(NotebookBetta notebookBetta: list){
+            notebookBetta.showNotebook();
+            System.out.println("---------------------------");
+
+        }
+        System.out.println("**********" + zagl + "**********");
+
+
+    }
+
+    //endregion
+
 
     //region Map
     private static Map<String, String[]> generateMap(String[][] param) {
@@ -75,16 +94,6 @@ public class Project {
         return mapMagazine;
     }
 
-    private static void vuvodParam(String[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(i + ": " + arr[i][0]);
-        }
-    }
-    private static void vuvodParam(String[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(i + ": " + arr[i]);
-        }
-    }
 
     private static  Map<String, String> filterMag(String[][] param){
         boolean key1 =true;
@@ -158,42 +167,10 @@ return filter;
         for (int i = 0; i < arr.length; i++) {
             mapMagazine.put(arr[i][0], null);
         }
-//        mapN.put("brand", null);
-//        mapN.put("ram", null);
-//        mapN.put("memory", null);
-//        mapN.put("processors", null);
-//        mapN.put("graphics", null);
-//        mapN.put("color", null);
-
         return mapMagazine;
 
     }
 
     //endregion
 
-    //region notebook
-    private static NotebookBetta[] generateNotebook(Map<String, String[]> map, int lenght) {
-        NotebookBetta[] notebookBettas = new NotebookBetta[lenght];
-
-        for (int i = 0; i < lenght; i++) {
-
-            notebookBettas[i] = NotebookBetta.randomCreatMap(map);
-            ;
-        }
-        return notebookBettas;
-    }
-
-    private static void showNotebooks(NotebookBetta[] notebookBettas, String zagl) {
-        System.out.println("**********" + zagl + "**********");
-
-
-        for (int i = 0; i < notebookBettas.length; i++) {
-            notebookBettas[i].showNotebook();
-            System.out.println("\n");
-            System.out.println("---------------------------");
-        }
-        System.out.println("**********" + zagl + "**********");
-
-    }
-    //endregion
 }
