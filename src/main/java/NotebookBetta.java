@@ -20,7 +20,7 @@ public class NotebookBetta {
 
     // Фунция рандомного заполнения обекта
 
-    public void randomCreatMap(Map<String,String[]> map){
+    public static NotebookBetta randomCreatMap(Map<String,String[]> map){
         String[] arrbrand = map.get("brand");
         String[] arrram = map.get("ram");
         String[] arrmemory = map.get("memory");
@@ -30,13 +30,19 @@ public class NotebookBetta {
 
         Random random = new Random();
 
-        this.brand = arrbrand[random.nextInt(arrbrand.length)];
-        this.ram = arrram[random.nextInt(arrram.length)];
-        this.memory = arrmemory[random.nextInt(arrmemory.length)];
-        this.processors = arrprocessors[random.nextInt(arrprocessors.length)];
-        this.graphics = arrgraphics[random.nextInt(arrgraphics.length)];
-        this.color = arrcolor[random.nextInt(arrcolor.length)];
+        NotebookBetta notebookBetta = new NotebookBetta();
+
+
+        notebookBetta.brand = arrbrand[random.nextInt(1,arrbrand.length)];
+        notebookBetta.ram = arrram[random.nextInt(1,arrram.length)];
+        notebookBetta.memory = arrmemory[random.nextInt(1,arrmemory.length)];
+        notebookBetta.processors = arrprocessors[random.nextInt(1,arrprocessors.length)];
+        notebookBetta.graphics = arrgraphics[random.nextInt(1,arrgraphics.length)];
+        notebookBetta.color = arrcolor[random.nextInt(1,arrcolor.length)];
+
+        return notebookBetta;
     }
+
     public void showNotebook(){
         System.out.println("Brand - " + brand);
         System.out.println("Ram - " + ram);
@@ -74,4 +80,42 @@ public class NotebookBetta {
     }
 
     //endregion
+
+    //region Set
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setRam(String ram) {
+        this.ram = ram;
+    }
+
+    public void setMemory(String memory) {
+        this.memory = memory;
+    }
+
+    public void setProcessors(String processors) {
+        this.processors = processors;
+    }
+
+    public void setGraphics(String graphics) {
+        this.graphics = graphics;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    //endregion
+
+
+    public NotebookBetta() {
+        this.brand = " ";
+        this.ram = " ";
+        this.memory = " ";
+        this.processors = " ";
+        this.graphics = " ";
+        this.color = " ";
+    }
 }
