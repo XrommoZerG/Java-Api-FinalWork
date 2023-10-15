@@ -22,6 +22,7 @@ public class Project {
         Scanner scanner = new Scanner(System.in);
 
         showListNonebook(listNotebook,"MAGAZINE");
+        List<NotebookBetta> aftefilterList;
 
 
         while (boolKey) {
@@ -38,7 +39,8 @@ public class Project {
                     filter = filterMag(param);
                     break;
                 case 2:
-
+                    aftefilterList = filterListNotebook(listNotebook,filter);
+                    showListNonebook(aftefilterList,"FILTER MAGAZINE");
                     break;
                 case 3:
                     filter = generateFilterNull(param);
@@ -61,6 +63,86 @@ public class Project {
     }
 
     //region List
+    static List<NotebookBetta> filterListNotebook(List<NotebookBetta> list,Map<String, String> filter){
+        List<NotebookBetta> newlist = new ArrayList<>();
+        String str;
+        for (NotebookBetta notebookBetta:list){
+
+            str = filter.get("brand");
+            if (notebookBetta.getBrand() == str) {
+                if (!newlist.contains(notebookBetta)){
+                    newlist.add(notebookBetta);
+                }
+            } else if (str == null) {
+            }
+            else {
+                continue;
+            }
+
+            str = filter.get("ram");
+            if (notebookBetta.getRam() == str) {
+                if (!newlist.contains(notebookBetta)){
+                    newlist.add(notebookBetta);
+                }
+            } else if (str == null) {
+            }
+            else {
+                newlist.remove(notebookBetta);
+                continue;
+            }
+
+            str = filter.get("memory");
+            if (notebookBetta.getMemory() == str) {
+                if (!newlist.contains(notebookBetta)){
+                    newlist.add(notebookBetta);
+                }
+            } else if (str == null) {
+            }
+            else {
+                newlist.remove(notebookBetta);
+                continue;
+            }
+
+            str = filter.get("processors");
+            if (notebookBetta.getProcessors() == str) {
+                if (!newlist.contains(notebookBetta)){
+                    newlist.add(notebookBetta);
+                }
+            } else if (str == null) {
+            }
+            else {
+                newlist.remove(notebookBetta);
+                continue;
+            }
+
+            str = filter.get("graphics");
+            if (notebookBetta.getGraphics() == str) {
+                if (!newlist.contains(notebookBetta)){
+                    newlist.add(notebookBetta);
+                }
+            } else if (str == null) {
+            }
+            else {
+                newlist.remove(notebookBetta);
+                continue;
+            }
+
+            str = filter.get("color");
+            if (notebookBetta.getColor() == str) {
+                if (!newlist.contains(notebookBetta)){
+                    newlist.add(notebookBetta);
+                }
+            } else if (str == null) {
+            }
+            else {
+                newlist.remove(notebookBetta);
+                continue;
+            }
+
+        }
+
+        return newlist;
+    }
     private static List<NotebookBetta> creatListNotebook(Map<String, String[]> mapM, int lenght){
         List<NotebookBetta> list = new ArrayList<>();
 
